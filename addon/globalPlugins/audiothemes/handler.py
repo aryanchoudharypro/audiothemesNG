@@ -18,6 +18,7 @@ import controlTypes
 import extensionPoints
 from config import post_configSave, post_configReset, post_configProfileSwitch
 from .unspoken import UnspokenPlayer
+import globalVars
 
 import speech
 from speech.sayAll import SayAllHandler
@@ -26,7 +27,7 @@ import NVDAObjects
 import addonHandler
 addonHandler.initTranslation()
 
-THEMES_DIR = os.path.join(os.path.dirname(__file__), "Themes")
+THEMES_DIR = os.path.join(globalVars.appArgs.configPath, "audio-themes")
 INFO_FILE_NAME = "info.json"
 SUPPORTED_FILE_TYPES = OrderedDict()
 # Translators: The file type to be shown in a dialog used to browse for audio files.
@@ -173,6 +174,7 @@ class AudioThemesHandler:
         self.enabled = True
         self.player = UnspokenPlayer()
         self.active_theme = None
+        self.ensure_themes_dir()
         self.migrate_all_themes_to_named_files()
         self.configure()
         for action in (
@@ -184,6 +186,13 @@ class AudioThemesHandler:
             action.register(self.configure)
         self._NVDA_getSpeechTextForProperties = speech.speech.getPropertiesSpeech
         speech.speech.getPropertiesSpeech = self._hook_getSpeechTextForProperties
+
+    def ensure_themes_dir(self):
+        if not os.path.isdir(THEMES_DIR):
+            os.makedirs(THEMES_DIR)
+        default_theme_path = os.path.join(THEMES_DIR, "Default")
+        if not os.path.isdir(default_theme_path):
+            shutil.copytree(os.path.join(os.path.dirname(__file__), "Themes", "Default"), default_theme_path)
 
     def close(self):
         if self.active_theme is not None:
