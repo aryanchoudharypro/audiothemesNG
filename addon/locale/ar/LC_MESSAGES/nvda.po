@@ -1,0 +1,202 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: wafiqtaher <wafiqtaher@gmail.com>\n"
+"Language-Team: وفيق <wafiqtaher@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.7\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"Language: ar\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "Theme Name"
+msgstr "إسم السيم"
+
+msgid "Theme Author"
+msgstr "كاتب السيم"
+
+msgid "Theme Description"
+msgstr "وصف السيم"
+
+msgid "All of the fields are required. Exiting..."
+msgstr "جميع الحقول مطلوبة. للإنهاء..."
+
+msgid "Error"
+msgstr "خطأ"
+
+msgid "Audio themes"
+msgstr "السيمات الصوتية"
+
+msgid "Create &New Audio Theme"
+msgstr "إنشاء &سيم صوتي جديد"
+
+msgid "Create a new audio theme package from scratch"
+msgstr "قم بإنشاء حزمة سمة صوت جديدة من البداية"
+
+msgid "Customize &Existing Audio Theme"
+msgstr "ت&خصيص  سيم صوت حالي"
+
+msgid "Customize an installed audio theme with your prefered  sounds."
+msgstr "تخصيص سمة الصوت المثبتة مع الأصوات المفضلة لديك."
+
+msgid "&Close"
+msgstr "إ&غلاق"
+
+msgid "Enter Theme Information"
+msgstr "أدخل معلومات السمة"
+
+msgid "Creating New Theme - {name}"
+msgstr "إنشاء سمة جديدة - {name}"
+
+msgid "No Audio Themes"
+msgstr "لاتوجد  ثيمات صوتية"
+
+msgid "Select An Audio Theme"
+msgstr "حدد سمة الصوت"
+
+msgid "Editing Audio Theme: {name}"
+msgstr "تعديل سمة الصوت: {name}"
+
+msgid "All Supported Audio Formats"
+msgstr "جميع صيغ الصوت المدعومة"
+
+msgid "Choose an audio file"
+msgstr "اختيار ملف صوتي"
+
+msgid "OK"
+msgstr "موافق"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Theme Sounds"
+msgstr "سمات الأصوات"
+
+msgid "&Change..."
+msgstr "&تغيير..."
+
+msgid "&Remove"
+msgstr "إ&زالة"
+
+msgid "&Add..."
+msgstr "إ&ضافة..."
+
+msgid "&Save"
+msgstr "ح&فظ إلى"
+
+msgid "Save Audio Theme Package"
+msgstr "حفظ حزمة سمة الصوت"
+
+msgid "Audio Theme Package (*.atp)|*.atp"
+msgstr "حزمة سمة الصوت (* .atp) | * .atp"
+
+msgid "Confirm Quit"
+msgstr "تأكيد الإنهاء"
+
+msgid "Add Sound"
+msgstr "إضافة الصوت"
+
+msgid "Sound For:"
+msgstr "الصوت من:"
+
+msgid "&Browse"
+msgstr "إ&ستعراض"
+
+msgid "&Preview"
+msgstr "&معاينة"
+
+msgid "&Audio Themes Studio"
+msgstr "&إستوديو سمات الصوت"
+
+msgid "Audio Themes Studio"
+msgstr "إستوديو سمات الصوت"
+
+msgid "Audio Themes"
+msgstr "سِمات صوتية"
+
+msgid "Enable audio themes"
+msgstr "تمكين سِمات الصوت"
+
+msgid "Select theme:"
+msgstr "إختر سيم:"
+
+msgid "&About"
+msgstr "&حول"
+
+msgid "Add &New..."
+msgstr "إ&ضافة جديد..."
+
+msgid "Play sounds in 3D mode"
+msgstr "تشغيل الأصوات في وضع 3D"
+
+msgid "Speak roles such as button, edit box , link etc. "
+msgstr "نطق الوظائف مثل الزر ، مربع التحرير ، الرابط ، إلخ. "
+
+msgid "Speak roles during say all"
+msgstr "نطق كل الوظائف أثناء نطق الكل"
+
+msgid "Use speech synthesizer volume"
+msgstr "إستخدام حجم آلة النطق"
+
+msgid "Audio themes volume:"
+msgstr "حجم سيِمات الصوت:"
+
+msgid "Audio themes volume"
+msgstr "حجم صَوْت اسيِمات"
+
+msgid ""
+"Name: {name}\n"
+"Author: {author}\n"
+"\n"
+"{summary}"
+msgstr ""
+"الإسم: {name}\n"
+"الكاتب: {author}\n"
+"\n"
+"{summary}"
+
+msgid "About Audio Theme"
+msgstr "حول موضوع الصوت"
+
+msgid "Remove Audio Theme"
+msgstr "إزالة صوت السيم"
+
+msgid "Choose an audio theme package"
+msgstr "إختيار حزمة سمة صوت"
+
+msgid "Audio Theme Packages"
+msgstr "حِزَمْ سمات الصوت"
+
+msgid "Ogg audio files"
+msgstr "ملفات صوتية ogg"
+
+msgid "Wave audio files"
+msgstr "ملفت صوتية Wave"
+
+msgid "Protected Edit Field"
+msgstr "نموذج تعديل محمي"
+
+msgid "First Item"
+msgstr "العنصر الأول"
+
+msgid "Last Item"
+msgstr "العنصر الإخير"
+
+msgid "New Notification Sound"
+msgstr "صوت تنبيه جديد"
+
+msgid "Web Page Loaded"
+msgstr "تحميل صفحة الويب"
+
+msgid ""
+"Welcome To The Audio Themes Studio:\n"
+"Here you can create new audio themes and package them for sharing with others.\n"
+"You can also customize anyone of your installed audio themes with your own sounds."
+msgstr ""
+"مرحبًا بكم في استوديو أنماط الصوت:\n"
+"هنا يمكنك إنشاء سمات صوتية جديدة وحزمها لمشاركتها مع الآخرين.\n"
+"يمكنك أيضًا تخصيص سِمات شخصية لك  من خلال السيمات المثبتة بأصواتك الخاصة."

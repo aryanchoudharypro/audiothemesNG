@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../style.css" media="screen">
+<title>audio themes NG 8.0</title>
+</head>
+<body>
+<h1>Audio Themes Add-on For NVDA</h1>
+<h2>Introduction</h2>
+<p>The Audio Themes add-on creates a virtual audio display that plays sounds when focusing or navigating objects (such as buttons, links etc...) the audio will be played in a location that corresponds to the object's location in the visual display. The add-on also enables you to activate, add, remove, edit, create, and distribute audio theme packages.</p>
+<h2>Usage</h2>
+<p>This add-on enhances your experience with NVDA in the following ways:</p>
+<ol>
+<li>When focusing or navigating objects, the add-on plays a preassigned audio file from the currently active audio theme.</li>
+<li>You can activate or remove an existing audio theme. You can also add an audio theme package to your audio themes collection.</li>
+<li>Through the Audio Themes Studio, you can create a new audio theme for your personal use or for sharing with others. You can also edit an existing audio theme as well.</li>
+</ol>
+<h2>Customizing the add-on</h2>
+<p>The settings for the Audio Themes add-on could be found in NVDA's settings dialog under the name "Audio Themes". You can customize the add-on in the following ways:</p>
+<ul>
+<li>To enable or disable the add-on, use the "Enable Audio Themes" check box.</li>
+<li>To activate an existing audio theme, select an audio theme from the "Select Theme" combobox and press the enter key. To permanently use the selected theme, you need to save your NVDA configurations by activating the "Save Configuration" menu item found in the NVDA's menu.</li>
+<li>To get more information about the selected audio theme, press the "About" button. This will give you a brief summary about the audio theme, such as its name, author, and description.</li>
+<li>To remove an existing audio theme, activate the "Remove" button, a confirmation message will be shown, pressing yes on this message will remove the selected theme.</li>
+<li>To add a new audio theme to your audio themes collection, activate the "Add New..." button, the familiar open file dialog will be shown, browse to your audio theme package, a file with an extension of .atp, and activate the Ok button. If the process is successful, you will find your newly added audio theme among your existing audio themes.</li>
+<li>You can control whether NVDA announces objects roles (such as button, link, checkbox..etc) by checking/unchecking the "Speak roles such as button, edit box, link..etc" check box.</li>
+<li>The announcement of roles during say-all could be enabled or disabled by checking/unchecking the "Speak roles during say-all check box".</li>
+<li>
+<p>The volume of the played sounds could be adjusted in two ways:</p>
+</li>
+<li>
+<p>You can set the volume of the audio-themes add-on to follow the volume of the currently used speech synthesizer by checking the "Use speech synthesizer volume" check box.</p>
+</li>
+<li>If you want to set a custom volume level for audio themes, you need to uncheck the "Use speech synthesizer volume" check box, and then use the "Audio themes volume" slider to set your preferred volume level.</li>
+</ul>
+<h2>Audio Themes Studio</h2>
+<p>The Audio Themes Studio is your one-stop-shop for all things audio themes. Using the studio, you can create a new audio theme and package it for personal use or distribution. You can also use the studio to edit any one of your existing audio themes.</p>
+<p>Note that the add-on supports two audio formats, namely: <em>.ogg and </em>.wav. Please make sure that your sounds are properly converted to one of these two formats before starting. You can freely mix the two if you need to.</p>
+<p>Please make sure that your sounds are short in length. To get the best results, do not use sounds longer than two seconds. </p>
+<h3>Creating and editing audio themes</h3>
+<p>The interface for creating and editing audio themes is pretty intuitive and self-explanatory, it is the same whether you are creating a new audio theme or editing an existing one. The only difference is that pressing the save button when creating an audio theme will package and save the new theme to a file, and pressing the save button when editing an audio theme will save your changes to the existing audio theme.</p>
+<h4>Creating a new audio theme</h4>
+<p>To create an audio theme follow these steps:</p>
+<ul>
+<li>From NVDA's menu, activate the "Audio Themes Studio" menu item</li>
+<li>From the Audio Themes Studio, activate the "Create new audio theme" button</li>
+<li>In the "Enter theme information" dialog, type in the theme name, author, and description</li>
+<li>The first thing that faces you in the next dialog is a list of the currently added sounds. When creating a new audio theme, this list will be initially empty.</li>
+<li>To add a new sound, activate the "Add..." button, a dialog containing a list of object's roles would be shown, select the role of the object, and browse to the audio file you want to assign to objects with the selected role, then activate the OK button to add it.</li>
+<li>To change an existing sound, select its corresponding item from the list, activate the "Change" button, and browse to your desired audio file.</li>
+<li>To remove an existing sound, select its corresponding item from the list and activate the "Remove" button. The sound would be removed from the audio theme.</li>
+<li>When done, activate the save button, and browse to the folder to which your audio theme package will be saved. </li>
+</ul>
+<h4>Editing an existing audio theme</h4>
+<p>The process of editing an audio theme is almost identical to the process of creating a new audio theme. The only differences are:</p>
+<ul>
+<li>When activating the "Customize existing audio theme" button from the audio themes studio, a dialog will be opened from which you must select one of your existing audio themes for editing.</li>
+<li>When activating the "Save" button in the audio themes editor, the changes would be saved and applied immediately to the selected audio theme.</li>
+</ul>
+<h2>Copyright</h2>
+<p>Copyright (c) 2014-2019 Musharraf Omer<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#98;&#110;&#111;&#109;&#101;&#114;&#50;&#48;&#49;&#49;&#64;&#104;&#111;&#116;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#105;&#98;&#110;&#111;&#109;&#101;&#114;&#50;&#48;&#49;&#49;&#64;&#104;&#111;&#116;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>.</p>
+<p>Although this add-on was started as an independent project, it has evolved to be an enhanced version of the 'Unspoken' add-on by Austin Hicks (camlorn38@gmail.com) and Bryan Smart (bryansmart@bryansmart.com). The majority of this add-on's development went into creating the tools to manage, edit and create audio theme packages. So a big thank you to these two guys for creating such a wonderful add-on, and open sourcing it so others can build on top of their work.</p>
+<h2>A Note on Third-party audio files:</h2>
+<p>The <strong>Default</strong> audio theme package in this add-on uses sounds from several sources, here is a breakdown for those sources:
+- Unspoken 3D Audio: An add-on for NVDA
+- TWBlue: A free and open source twitter client
+- Mushy TalkBack: An alternative talkback with better sounds.</p>
+<h2>License</h2>
+<p>Licensed under the GNU General Public License. See the file <strong>copying</strong> for more details.</p>
+</body>
+</html>
