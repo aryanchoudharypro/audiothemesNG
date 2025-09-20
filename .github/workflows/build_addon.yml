@@ -1,0 +1,103 @@
+name: build addon
+
+on:
+  push:
+    tags: ["*"]
+    branches: [main]
+
+  pull_request:
+    branches: [main, master]
+
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build (e.g., 1.2.3)'
+        required: true
+        default: 'dev'
+      release_mode:
+        description: 'Release mode'
+        required: true
+        type: choice
+        options:
+          - workflow
+          - no_release
+          - release
+          - prerelease
+        default: workflow
+      release_description:
+        description: 'Description for the release (shown on Releases page)'
+        required: false
+        default: ''
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Set version and release mode
+      run: |
+        echo "VERSION=${{ github.event.inputs.version || github.ref_name }}" >> $GITHUB_ENV
+        echo "RELEASE_MODE=${{ github.event.inputs.release_mode }}" >> $GITHUB_ENV
+        echo "RELEASE_DESCRIPTION=${{ github.event.inputs.release_description }}" >> changelog.md
+
+    - run: echo -e "pre-commit\nscons\nmarkdown" > requirements.txt
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: 3.11
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip wheel
+        pip install -r requirements.txt
+        sudo apt-get update -y
+        sudo apt-get install -y gettext
+
+    - name: Code checks
+      run: export SKIP=no-commit-to-branch; pre-commit run --all
+
+    - name: building addon
+      run: scons version=$VERSION && scons pot
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: packaged_addon
+        path: |
+          ./*.nvda-addon
+          ./*.pot
+
+  upload_release:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.release_mode == 'release' || github.event.inputs.release_mode == 'prerelease' || startsWith(github.ref, 'refs/tags/') }}
+    needs: ["build"]
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: download releases files
+      uses: actions/download-artifact@v5
+
+    - name: Display structure of downloaded files
+      run: ls -R
+
+    - name: Calculate sha256
+      run: |
+        echo -e "\nSHA256: " >> changelog.md
+        sha256sum *.nvda-addon >> changelog.md
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          *.nvda-addon
+          *.pot
+        body_path: changelog.md
+        fail_on_unmatched_files: true
+        tag_name: ${{ github.event.inputs.version || github.ref_name }}
+        prerelease: ${{ github.event.inputs.release_mode == 'prerelease' }}
