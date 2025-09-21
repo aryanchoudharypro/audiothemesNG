@@ -20,9 +20,10 @@ from config import post_configSave, post_configReset, post_configProfileSwitch
 from .unspoken import UnspokenPlayer
 import globalVars
 
+import NVDAObjects
+
 import speech
 from speech.sayAll import SayAllHandler
-import NVDAObjects
 
 import addonHandler
 addonHandler.initTranslation()
@@ -47,6 +48,8 @@ audiothemes_config_defaults = {
     "use_synth_volume": "boolean(default=True)",
     "volume": "integer(default=100)",
     "migrated_to_named_files": "boolean(default=False)",
+    "disabled_apps": "string(default='')",
+    "default_theme_deleted": "boolean(default=False)",
 }
 
 
@@ -191,8 +194,20 @@ class AudioThemesHandler:
         if not os.path.isdir(THEMES_DIR):
             os.makedirs(THEMES_DIR)
         default_theme_path = os.path.join(THEMES_DIR, "Default")
-        if not os.path.isdir(default_theme_path):
-            shutil.copytree(os.path.join(os.path.dirname(__file__), "Themes", "Default"), default_theme_path)
+        user_config = config.conf["audiothemes"]
+        if os.path.isdir(default_theme_path):
+            if user_config["default_theme_deleted"]:
+                user_config["default_theme_deleted"] = False
+            return
+        if user_config["default_theme_deleted"]:
+            return
+        os.makedirs(default_theme_path)
+        info_path = os.path.join(default_theme_path, INFO_FILE_NAME)
+        if not os.path.exists(info_path):
+            with open(info_path, "w") as f:
+                json.dump(
+                    {"name": "Default", "author": "NVDA Contributers", "summary": "Default theme"}, f
+                )
 
     def close(self):
         if self.active_theme is not None:
@@ -256,10 +271,16 @@ class AudioThemesHandler:
         self.player.wet_level = unspoken_config["WetLevel"]
         self.player.dry_level = unspoken_config["DryLevel"]
         self.player.width = unspoken_config["Width"]
+        self.disabled_apps = user_config["disabled_apps"].split(',') if user_config["disabled_apps"] else []
 
     def play(self, obj, sound):
         if not self.enabled or (self.active_theme is None):
             return
+        
+        foreground_app = _get_foreground_app_name()
+        if foreground_app and foreground_app in self.disabled_apps:
+            return
+
         sound_obj = self.active_theme.sounds.get(sound)
         if sound_obj is None:
             return
@@ -287,8 +308,18 @@ class AudioThemesHandler:
         with ZipFile(theme_pack, "r") as pack:
             if pack.infolist()[0].is_dir():
                 # Legacy theme package
-                return cls._install_legacy(pack, identified_path)
-            pack.extractall(path=identified_path)
+                cls._install_legacy(pack, identified_path)
+            else:
+                pack.extractall(path=identified_path)
+        info_file = os.path.join(identified_path, INFO_FILE_NAME)
+        if not os.path.exists(info_file):
+            return
+        theme_info = cls.load_info_file(info_file)
+        if theme_info.get("name", "").lower() == "default":
+            default_theme_path = os.path.join(THEMES_DIR, "Default")
+            if os.path.isdir(default_theme_path):
+                shutil.rmtree(default_theme_path)
+            os.rename(identified_path, default_theme_path)
 
     @classmethod
     def _install_legacy(cls, pack, final_dst):
@@ -307,6 +338,8 @@ class AudioThemesHandler:
 
     @staticmethod
     def remove_audio_theme(theme):
+        if theme.name == "Default":
+            config.conf["audiothemes"]["default_theme_deleted"] = True
         theme.deactivate()
         if theme.directory:
             shutil.rmtree(theme.directory)
@@ -328,3 +361,12 @@ class AudioThemesHandler:
                 file = os.path.join(source_dir, filename)
                 if os.path.isfile(file):
                     zip.write(file, filename)
+
+def _get_foreground_app_name():
+    try:
+        foreground_object = NVDAObjects.api.getForegroundObject()
+        if foreground_object and foreground_object.appModule:
+            return foreground_object.appModule.appName
+    except:
+        pass
+    return None
