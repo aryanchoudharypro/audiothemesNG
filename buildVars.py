@@ -55,9 +55,9 @@ fixed the bug where the audio themes sstudio won't even open.
 	# Do not change unless you know what you are doing!
 	addon_updateChannel=None,
 	# Add-on license such as GPL 2
-	addon_license=None,
+	addon_license="GPL-2.0",
 	# URL for the license document the ad-on is licensed under
-	addon_licenseURL=None,
+	addon_licenseURL="https://www.gnu.org/licenses/gpl-2.0.html",
 )
 
 # Define the python files that are the sources of your add-on.
