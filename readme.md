@@ -50,9 +50,29 @@ In the studio, you can:
 - **Create a new audio theme:** This will guide you through the process of creating a new theme from scratch.
 - **Customize an existing audio theme:** Select this option to modify the sounds of an installed theme. You can change existing sounds, add new ones, or remove sounds from the theme.
 
-## Creating and Editing Audio Themes
+### Creating and editing audio themes
 
-You can create your own audio themes or edit existing ones using the Audio Themes Studio.
+The interface for creating and editing audio themes is pretty intuitive and self-explanatory, it is the same whether you are creating a new audio theme or editing an existing one. The only difference is that pressing the save button when creating an audio theme will package and save the new theme to a file, and pressing the save button when editing an audio theme will save your changes to the existing audio theme.
+
+#### Creating a new audio theme
+
+To create an audio theme follow these steps:
+
+* From NVDA's menu, activate the "Audio Themes Studio" menu item
+* From the Audio Themes Studio, activate the "Create new audio theme" button
+* In the "Enter theme information" dialog, type in the theme name, author, and description
+* The first thing that faces you in the next dialog is a list of the currently added sounds. When creating a new audio theme, this list will be initially empty.
+* To add a new sound, activate the "Add..." button, a dialog containing a list of object's roles would be shown, select the role of the object, and browse to the audio file you want to assign to objects with the selected role, then activate the OK button to add it.
+* To change an existing sound, select its corresponding item from the list, activate the "Change" button, and browse to your desired audio file.
+* To remove an existing sound, select its corresponding item from the list and activate the "Remove" button. The sound would be removed from the audio theme.
+* When done, activate the save button, and browse to the folder to which your audio theme package will be saved. 
+
+#### Editing an existing audio theme
+
+The process of editing an audio theme is almost identical to the process of creating a new audio theme. The only differences are:
+
+* When activating the "Customize existing audio theme" button from the audio themes studio, a dialog will be opened from which you must select one of your existing audio themes for editing.
+* When activating the "Save" button in the audio themes editor, the changes would be saved and applied immediately to the selected audio theme. if you want to export, you will find a button to do so in the editer 
 
 ### Audio File Requirements
 
