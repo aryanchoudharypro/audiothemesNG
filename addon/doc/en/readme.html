@@ -7,67 +7,83 @@
 <title>audio themes NG 8.0</title>
 </head>
 <body>
-<h1>Audio Themes Add-on For NVDA</h1>
-<h2>Introduction</h2>
-<p>The Audio Themes add-on creates a virtual audio display that plays sounds when focusing or navigating objects (such as buttons, links etc...) the audio will be played in a location that corresponds to the object's location in the visual display. The add-on also enables you to activate, add, remove, edit, create, and distribute audio theme packages.</p>
-<h2>Usage</h2>
-<p>This add-on enhances your experience with NVDA in the following ways:</p>
+<h1>Audio Themes NVDA Add-on</h1>
+<p>This add-on provides an immersive audio experience for NVDA screen reader users by playing sounds for various UI events. It allows for the creation, installation, and customization of audio themes, enhancing the auditory feedback from the user interface.</p>
+<h2>Features</h2>
+<ul>
+<li><strong>Audio effects :</strong> Plays sounds for UI events such as focusing on controls, navigating lists, and more.</li>
+<li><strong>3D Audio:</strong> Utilizes Steam Audio to provide 3D positional audio, giving a sense of where controls are on the screen.</li>
+<li><strong>Reverb:</strong> Adds reverb effects to the audio for a more immersive experience.</li>
+<li><strong>Customizable Themes:</strong> Allows users to create, install, and switch between different audio themes.</li>
+<li><strong>Audio Themes Studio:</strong> A built-in tool to create new audio themes or edit existing ones.</li>
+<li><strong>Configuration:</strong> Provides a settings panel to enable/disable features, adjust volume, and configure 3D audio and reverb settings.</li>
+</ul>
+<h2>Installation</h2>
 <ol>
-<li>When focusing or navigating objects, the add-on plays a preassigned audio file from the currently active audio theme.</li>
-<li>You can activate or remove an existing audio theme. You can also add an audio theme package to your audio themes collection.</li>
-<li>Through the Audio Themes Studio, you can create a new audio theme for your personal use or for sharing with others. You can also edit an existing audio theme as well.</li>
+<li>Download the latest release of the add-on from the [releases page]</li>
+<li>Open the downloaded <code>.nvda-addon</code> file.</li>
+<li>NVDA will ask you to confirm the installation. Choose "Yes".</li>
+<li>Restart NVDA to complete the installation.</li>
 </ol>
-<h2>Customizing the add-on</h2>
-<p>The settings for the Audio Themes add-on could be found in NVDA's settings dialog under the name "Audio Themes". You can customize the add-on in the following ways:</p>
+<h2>How to Use</h2>
+<h3>Enabling/Disabling Audio Themes</h3>
+<p>You can enable or disable the audio themes feature in NVDA's settings:</p>
+<ol>
+<li>Open the NVDA menu (NVDA+N).</li>
+<li>Go to "Preferences" -&gt; "Settings".</li>
+<li>In the settings dialog, select the "Audio Themes" category.</li>
+<li>Check or uncheck the "Enable audio themes" checkbox.</li>
+</ol>
+<h3>Selecting and Managing Themes</h3>
+<p>In the "Audio Themes" settings panel, you can:</p>
 <ul>
-<li>To enable or disable the add-on, use the "Enable Audio Themes" check box.</li>
-<li>To activate an existing audio theme, select an audio theme from the "Select Theme" combobox and press the enter key. To permanently use the selected theme, you need to save your NVDA configurations by activating the "Save Configuration" menu item found in the NVDA's menu.</li>
-<li>To get more information about the selected audio theme, press the "About" button. This will give you a brief summary about the audio theme, such as its name, author, and description.</li>
-<li>To remove an existing audio theme, activate the "Remove" button, a confirmation message will be shown, pressing yes on this message will remove the selected theme.</li>
-<li>To add a new audio theme to your audio themes collection, activate the "Add New..." button, the familiar open file dialog will be shown, browse to your audio theme package, a file with an extension of .atp, and activate the Ok button. If the process is successful, you will find your newly added audio theme among your existing audio themes.</li>
-<li>You can control whether NVDA announces objects roles (such as button, link, checkbox..etc) by checking/unchecking the "Speak roles such as button, edit box, link..etc" check box.</li>
-<li>The announcement of roles during say-all could be enabled or disabled by checking/unchecking the "Speak roles during say-all check box".</li>
-<li>
-<p>The volume of the played sounds could be adjusted in two ways:</p>
-</li>
-<li>
-<p>You can set the volume of the audio-themes add-on to follow the volume of the currently used speech synthesizer by checking the "Use speech synthesizer volume" check box.</p>
-</li>
-<li>If you want to set a custom volume level for audio themes, you need to uncheck the "Use speech synthesizer volume" check box, and then use the "Audio themes volume" slider to set your preferred volume level.</li>
+<li><strong>Select a theme:</strong> Choose from the list of installed audio themes.</li>
+<li><strong>Add a new theme:</strong> Click the "Add New..." button to install a theme from an <code>.atp</code> file.</li>
+<li><strong>Remove a theme:</strong> Select a theme and click the "Remove" button.</li>
+<li><strong>About a theme:</strong> Click the "About" button to see information about the selected theme.</li>
 </ul>
-<h2>Audio Themes Studio</h2>
-<p>The Audio Themes Studio is your one-stop-shop for all things audio themes. Using the studio, you can create a new audio theme and package it for personal use or distribution. You can also use the studio to edit any one of your existing audio themes.</p>
-<p>Note that the add-on supports two audio formats, namely: <em>.ogg and </em>.wav. Please make sure that your sounds are properly converted to one of these two formats before starting. You can freely mix the two if you need to.</p>
-<p>Please make sure that your sounds are short in length. To get the best results, do not use sounds longer than two seconds. </p>
-<h3>Creating and editing audio themes</h3>
-<p>The interface for creating and editing audio themes is pretty intuitive and self-explanatory, it is the same whether you are creating a new audio theme or editing an existing one. The only difference is that pressing the save button when creating an audio theme will package and save the new theme to a file, and pressing the save button when editing an audio theme will save your changes to the existing audio theme.</p>
-<h4>Creating a new audio theme</h4>
-<p>To create an audio theme follow these steps:</p>
+<h3>Using the Audio Themes Studio</h3>
+<p>The Audio Themes Studio allows you to create and edit audio themes. To open the studio:</p>
+<ol>
+<li>Open the NVDA menu (NVDA+N).</li>
+<li>Select "Audio Themes Studio".</li>
+</ol>
+<p>In the studio, you can:</p>
 <ul>
-<li>From NVDA's menu, activate the "Audio Themes Studio" menu item</li>
-<li>From the Audio Themes Studio, activate the "Create new audio theme" button</li>
-<li>In the "Enter theme information" dialog, type in the theme name, author, and description</li>
-<li>The first thing that faces you in the next dialog is a list of the currently added sounds. When creating a new audio theme, this list will be initially empty.</li>
-<li>To add a new sound, activate the "Add..." button, a dialog containing a list of object's roles would be shown, select the role of the object, and browse to the audio file you want to assign to objects with the selected role, then activate the OK button to add it.</li>
-<li>To change an existing sound, select its corresponding item from the list, activate the "Change" button, and browse to your desired audio file.</li>
-<li>To remove an existing sound, select its corresponding item from the list and activate the "Remove" button. The sound would be removed from the audio theme.</li>
-<li>When done, activate the save button, and browse to the folder to which your audio theme package will be saved. </li>
+<li><strong>Create a new audio theme:</strong> This will guide you through the process of creating a new theme from scratch.</li>
+<li><strong>Customize an existing audio theme:</strong> Select this option to modify the sounds of an installed theme. You can change existing sounds, add new ones, or remove sounds from the theme.</li>
 </ul>
-<h4>Editing an existing audio theme</h4>
-<p>The process of editing an audio theme is almost identical to the process of creating a new audio theme. The only differences are:</p>
+<h2>Creating and Editing Audio Themes</h2>
+<p>You can create your own audio themes or edit existing ones using the Audio Themes Studio.</p>
+<h3>Audio File Requirements</h3>
+<p>When adding sounds to a theme, make sure they meet the following requirements:</p>
 <ul>
-<li>When activating the "Customize existing audio theme" button from the audio themes studio, a dialog will be opened from which you must select one of your existing audio themes for editing.</li>
-<li>When activating the "Save" button in the audio themes editor, the changes would be saved and applied immediately to the selected audio theme.</li>
+<li><strong>Format:</strong> The audio files must be in <code>.wav</code> format.</li>
+<li><strong>Sample Rate:</strong> The recommended sample rate is 44100 Hz.</li>
 </ul>
-<h2>Copyright</h2>
-<p>Copyright (c) 2014-2019 Musharraf Omer<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#98;&#110;&#111;&#109;&#101;&#114;&#50;&#48;&#49;&#49;&#64;&#104;&#111;&#116;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#105;&#98;&#110;&#111;&#109;&#101;&#114;&#50;&#48;&#49;&#49;&#64;&#104;&#111;&#116;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>.</p>
-<p>Although this add-on was started as an independent project, it has evolved to be an enhanced version of the 'Unspoken' add-on by Austin Hicks (camlorn38@gmail.com) and Bryan Smart (bryansmart@bryansmart.com). The majority of this add-on's development went into creating the tools to manage, edit and create audio theme packages. So a big thank you to these two guys for creating such a wonderful add-on, and open sourcing it so others can build on top of their work.</p>
-<h2>A Note on Third-party audio files:</h2>
-<p>The <strong>Default</strong> audio theme package in this add-on uses sounds from several sources, here is a breakdown for those sources:
-- Unspoken 3D Audio: An add-on for NVDA
-- TWBlue: A free and open source twitter client
-- Mushy TalkBack: An alternative talkback with better sounds.</p>
-<h2>License</h2>
-<p>Licensed under the GNU General Public License. See the file <strong>copying</strong> for more details.</p>
+<h3>Exporting Your Theme</h3>
+<p>After creating or editing a theme, you can export it as an <code>.atp</code> file. This file can be shared with other users or used as a backup. You can find the export option in the editing screen. when you make a theme for the first time, the export dialog will come up as soon as you hit the save button </p>
+<h2>Configuration</h2>
+<p>The "Audio Themes" settings panel provides several options to customize your experience:</p>
+<ul>
+<li><strong>Enable audio themes:</strong> Toggles the add-on on or off.</li>
+<li><strong>Select theme:</strong> Choose the active audio theme.</li>
+<li><strong>Play sounds in 3D mode:</strong> Enables or disables 3D audio.</li>
+<li><strong>Speak roles...:</strong> When unchecked, NVDA will not speak the role of a control if a sound is played for it.</li>
+<li><strong>Speak roles during say all:</strong> When checked, roles will be spoken during a "say all" session.</li>
+<li><strong>Use speech synthesizer volume:</strong> When checked, the add-on's volume will match the synthesizer's volume.</li>
+<li><strong>Audio themes volume:</strong> Adjust the volume of the audio themes.</li>
+<li><strong>Reverb Settings:</strong></li>
+<li><strong>Enable Reverb:</strong> Toggles the reverb effect.</li>
+<li><strong>Room Size, Damping, Wet Level, Dry Level, Width:</strong> Adjust the reverb parameters.</li>
+</ul>
+<h2>Credits</h2>
+<p>the first version of this addon was made by Musharraf Omer: ibnomer2011@hotmail.com
+huge thanks to all the people who worked on the unspoken addon, that is the base for all the audio themes versions! 
+• Bryan Smart: the original work on two versions of the Unspoken addon
+• Masonasons: updating the Unspoken addon with the API changes in 2023 and 2024
+• Ambro86: maintaining modern Python bindings for synthizer, as well as contributing some code to unspoken
+• Tyler Spivey: for sitting down, figuring out steam audio, and creating Python bindings that do what was needed! 
+• Samuel Proulx, for releasing the unspokenNG addon.  </p>
 </body>
 </html>
