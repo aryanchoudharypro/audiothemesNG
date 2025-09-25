@@ -28,7 +28,7 @@ This add-on creates a virtual audio display that plays sounds when focusing or n
 
 """),
 	# version
-	addon_version="8.0",
+	addon_version=8.0,
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
 	addon_changelog=_("""
