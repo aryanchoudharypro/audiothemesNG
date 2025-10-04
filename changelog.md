@@ -1,3 +1,5 @@
+## audio themes NG 8.1
+* added missing libs. 
 ## audio themes NG 8.0
 * the formats that are required for the audio files have been changed.  you need *.wav files with a sample rate of 44100 hz
 * switched to steam audio for 3d audio! 

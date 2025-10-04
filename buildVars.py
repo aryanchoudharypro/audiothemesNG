@@ -28,16 +28,10 @@ This add-on creates a virtual audio display that plays sounds when focusing or n
 
 """),
 	# version
-	addon_version=8.0,
+	addon_version=8.1,
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
-	addon_changelog=_("""
-switched to steam audio for 3d audio! 
-added reverb 
-added an export button to the audio themes sstudio when editing a theme, so you can now make packages of a theme with the latest changes! 
-fixed the bug with the audio themes sstudio where it wouldn't remove sounds when you save the theme after editing it
-fixed the bug where the audio themes sstudio won't even open. 
-"""),
+	addon_changelog=_("""added missing libraries. """),
 	# Author(s)
 	addon_author="aryan <aryanchoudharyk2008@gmail.com>",
 	# URL for the add-on documentation support
