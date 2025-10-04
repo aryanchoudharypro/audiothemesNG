@@ -34,9 +34,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v5
-  with:
-    lfs: true
+    - name: Checkout with Git LFS
+      uses: actions/checkout@v5
+      with:
+        lfs: true
+
     - name: Set version and release mode
       run: |
         echo "VERSION=${{ github.event.inputs.version || github.ref_name }}" >> $GITHUB_ENV
@@ -61,6 +63,9 @@ jobs:
     - name: Code checks
       run: export SKIP=no-commit-to-branch; pre-commit run --all
 
+    - name: Verify LFS files
+      run: git lfs ls-files
+
     - name: building addon
       run: scons version=$VERSION && scons pot
 
@@ -80,6 +85,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v5
+      with:
+        lfs: true
 
     - name: download releases files
       uses: actions/download-artifact@v5
