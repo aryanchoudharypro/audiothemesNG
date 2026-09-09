@@ -50,6 +50,8 @@ audiothemes_config_defaults = {
     "migrated_to_named_files": "boolean(default=False)",
     "disabled_apps": "string(default='')",
     "default_theme_deleted": "boolean(default=False)",
+    "play_click_sounds": "boolean(default=True)",
+    "play_toggle_sounds": "boolean(default=True)",
 }
 
 
@@ -61,6 +63,9 @@ class SpecialProps(IntEnum):
     last = 2502
     notify = 2503
     loaded = 2504
+    click = 2505
+    toggle_on = 2506
+    toggle_off = 2507
 
 
 theme_roles = copy.copy(controlTypes.roleLabels)
@@ -76,6 +81,12 @@ theme_roles.update(
         SpecialProps.notify: _("New Notification Sound"),
         # Translators: The label of the sound which will be played when a web page is loaded.
         SpecialProps.loaded: _("Web Page Loaded"),
+        # Translators: The label of the sound which will be played when a button or element is clicked/activated.
+        SpecialProps.click: _("Click (Button / Action)"),
+        # Translators: The label of the sound which will be played when a toggle switch or checkbox is turned on.
+        SpecialProps.toggle_on: _("Toggle On (Checkbox / Switch)"),
+        # Translators: The label of the sound which will be played when a toggle switch or checkbox is turned off.
+        SpecialProps.toggle_off: _("Toggle Off (Checkbox / Switch)"),
     }
 )
 
@@ -195,19 +206,30 @@ class AudioThemesHandler:
             os.makedirs(THEMES_DIR)
         default_theme_path = os.path.join(THEMES_DIR, "Default")
         user_config = config.conf["audiothemes"]
-        if os.path.isdir(default_theme_path):
+        if not os.path.isdir(default_theme_path):
+            if not user_config["default_theme_deleted"]:
+                os.makedirs(default_theme_path)
+                info_path = os.path.join(default_theme_path, INFO_FILE_NAME)
+                if not os.path.exists(info_path):
+                    with open(info_path, "w") as f:
+                        json.dump(
+                            {"name": "Default", "author": "NVDA Contributers", "summary": "Default theme"}, f
+                        )
+        else:
             if user_config["default_theme_deleted"]:
                 user_config["default_theme_deleted"] = False
-            return
-        if user_config["default_theme_deleted"]:
-            return
-        os.makedirs(default_theme_path)
-        info_path = os.path.join(default_theme_path, INFO_FILE_NAME)
-        if not os.path.exists(info_path):
-            with open(info_path, "w") as f:
-                json.dump(
-                    {"name": "Default", "author": "NVDA Contributers", "summary": "Default theme"}, f
-                )
+
+        # Copy any missing default sound files from addon Themes/Default
+        builtin_themes_dir = os.path.join(os.path.dirname(__file__), "Themes", "Default")
+        if os.path.isdir(builtin_themes_dir) and os.path.isdir(default_theme_path):
+            for filename in os.listdir(builtin_themes_dir):
+                src_f = os.path.join(builtin_themes_dir, filename)
+                dst_f = os.path.join(default_theme_path, filename)
+                if os.path.isfile(src_f) and not os.path.exists(dst_f):
+                    try:
+                        shutil.copy2(src_f, dst_f)
+                    except Exception:
+                        pass
 
     def close(self):
         if self.active_theme is not None:
@@ -272,6 +294,8 @@ class AudioThemesHandler:
         self.player.dry_level = unspoken_config["DryLevel"]
         self.player.width = unspoken_config["Width"]
         self.disabled_apps = user_config["disabled_apps"].split(',') if user_config["disabled_apps"] else []
+        self.play_click_sounds = user_config.get("play_click_sounds", True)
+        self.play_toggle_sounds = user_config.get("play_toggle_sounds", True)
 
     def play(self, obj, sound):
         if not self.enabled or (self.active_theme is None):
@@ -282,6 +306,11 @@ class AudioThemesHandler:
             return
 
         sound_obj = self.active_theme.sounds.get(sound)
+        if sound_obj is None:
+            default_theme = self.get_theme_from_folder("Default")
+            if default_theme and default_theme.exists():
+                default_theme.load(self.player)
+                sound_obj = default_theme.sounds.get(sound)
         if sound_obj is None:
             return
         self.player.play(obj, sound_obj)
