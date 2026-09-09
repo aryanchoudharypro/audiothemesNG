@@ -75,7 +75,7 @@ class ThemeState:
                         role=role, src=filepath, dst=filepath
                     )
                 )
-        self.initial_state = tuple(sorted(_init_state))
+        self.initial_state = tuple(sorted(_init_state, key=lambda finf: str(finf.role_label).lower()))
         self.state = list(self.initial_state)
 
     def apply_diff(self):
@@ -305,6 +305,7 @@ class ThemeBlenderDialog(BaseDialog):
         with dlg:
             if dlg.ShowModal() == wx.ID_OK:
                 self.theme_state.state.append(dlg.get_sound())
+                self.theme_state.state.sort(key=lambda finf: str(finf.role_label).lower())
                 self._maintain_state()
 
     def onRemove(self, event):
@@ -357,6 +358,7 @@ class AudioSelectorDialog(BaseDialog):
         nonexisting_roles = [
             (r, l) for r, l in theme_roles.items() if r not in existing_roles
         ]
+        nonexisting_roles.sort(key=lambda item: str(item[1]).lower())
         for role, label in nonexisting_roles:
             self.roleChoice.Append(label, role)
         self.roleChoice.SetSelection(0)

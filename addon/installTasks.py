@@ -42,5 +42,12 @@ def onInstall():
 	if os.path.exists(addon_default_theme_path):
 		if not os.path.exists(dest_default_theme_path):
 			shutil.copytree(addon_default_theme_path, dest_default_theme_path)
-	if os.path.exists(addon_themes_path):
-		shutil.rmtree(addon_themes_path)
+		else:
+			for item in os.listdir(addon_default_theme_path):
+				s_item = os.path.join(addon_default_theme_path, item)
+				d_item = os.path.join(dest_default_theme_path, item)
+				if os.path.isfile(s_item):
+					try:
+						shutil.copy2(s_item, d_item)
+					except Exception:
+						pass

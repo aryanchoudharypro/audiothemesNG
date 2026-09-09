@@ -49,6 +49,14 @@ class AudioThemesSettingsPanel(SettingsPanel):
         self.useInSayAllCheckbox = wx.CheckBox(
             innerPanel, -1, _("Speak roles during say all")
         )
+        # Translators: label for a checkbox to toggle whether button click sounds should be played
+        self.playClickCheckbox = wx.CheckBox(
+            innerPanel, -1, _("Play sound when clicking/activating buttons")
+        )
+        # Translators: label for a checkbox to toggle whether toggle switch/checkbox on/off sounds should be played
+        self.playToggleCheckbox = wx.CheckBox(
+            innerPanel, -1, _("Play sounds when toggling switches and checkboxes on or off")
+        )
         # Translators: label for a checkbox to toggle whether the volume of this add-on should follow the synthesizer volume
         self.useSynthVolumeCheckbox = wx.CheckBox(
             innerPanel, -1, _("Use speech synthesizer volume")
@@ -84,6 +92,8 @@ class AudioThemesSettingsPanel(SettingsPanel):
                 (self.play3dCheckbox, 1, wx.ALL, 5),
                 (self.speakRoleCheckbox, 1, wx.ALL, 5),
                 (self.useInSayAllCheckbox, 1, wx.ALL, 5),
+                (self.playClickCheckbox, 1, wx.ALL, 5),
+                (self.playToggleCheckbox, 1, wx.ALL, 5),
                 (self.useSynthVolumeCheckbox, 1, wx.ALL, 5),
                 (volumeLabel, 1, wx.TOP | wx.LEFT | wx.RIGHT, 10),
                 (self.volumeSlider, 1, wx.BOTTOM | wx.LEFT | wx.RIGHT, 5),
@@ -173,6 +183,8 @@ class AudioThemesSettingsPanel(SettingsPanel):
         self.play3dCheckbox.SetValue(conf["audio3d"])
         self.speakRoleCheckbox.SetValue(conf["speak_roles"])
         self.useInSayAllCheckbox.SetValue(conf["use_in_say_all"])
+        self.playClickCheckbox.SetValue(conf.get("play_click_sounds", True))
+        self.playToggleCheckbox.SetValue(conf.get("play_toggle_sounds", True))
         self.useSynthVolumeCheckbox.SetValue(conf["use_synth_volume"])
         self.volumeSlider.SetValue(conf["volume"])
         unspoken_conf = config.conf["unspoken"]
@@ -203,6 +215,8 @@ class AudioThemesSettingsPanel(SettingsPanel):
         conf["audio3d"] = self.play3dCheckbox.IsChecked()
         conf["speak_roles"] = self.speakRoleCheckbox.IsChecked()
         conf["use_in_say_all"] = self.useInSayAllCheckbox.IsChecked()
+        conf["play_click_sounds"] = self.playClickCheckbox.IsChecked()
+        conf["play_toggle_sounds"] = self.playToggleCheckbox.IsChecked()
         conf["use_synth_volume"] = self.useSynthVolumeCheckbox.IsChecked()
         conf["volume"] = self.volumeSlider.GetValue()
         unspoken_conf = config.conf["unspoken"]
